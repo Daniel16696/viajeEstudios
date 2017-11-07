@@ -3,18 +3,19 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
+'use strict';
 var dsConfig = require('../datasources.local.js');
-var path = require('path');
 
-module.exports = function(app) {
-  var User = app.models.user;
-
+module.exports = function(server) {
+  // Install a `/` route that returns server status
+  var router = server.loopback.Router();
   //login page
-  app.get('/', function(req, res) {
+  router.get('/', function(req, res) {
     var credentials = dsConfig.myEmailDataSource.transports[0].auth;
     res.render('login', {
       email: credentials.user,
       password: credentials.pass
     });
-});
+  });
+  server.use(router);
 };
