@@ -18,4 +18,8 @@ module.exports = function(server) {
     });
   });
   server.use(router);
+  //verified
+  router.get('/verified', function(req, res) {
+    res.render('verified');
+});
 };
