@@ -11,7 +11,7 @@ module.exports = function (Centro) {
         next();
     });
   
-    Centro.beforeRemote('find', function(context, centro, next) {
+    Centro.beforeRemote('*.*', function(context, centro, next) {
         var app = Centro.app;
         var RoleMapping = app.models.RoleMapping;
         var todosCentros = false;
